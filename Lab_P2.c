@@ -1,19 +1,19 @@
 # include<stdio.h>
 # include<stdbool.h>
 
-struct Interval{
+typedef struct Interval{
     int start, end;
-};
+}Interval;
 int compareInterval(const void* a, const void* b)
 {
-    return ((struct Interval*)a)->start - ((struct Interval*)b)->start;
+    return ((Interval*)a)->start - ((Interval*)b)->start;
 }
-void Merge(struct Interval arr[], int n)
+void Merge(Interval arr[], int n)
 {
    if(n <= 0)
      return;
 
-   qsort(arr, n, sizeof(struct Interval), compareInterval);
+   qsort(arr, n, sizeof(Interval), compareInterval);
    int idx = 0;
    for(int i =1; i<n; i++){
     if (arr[idx].end >= arr[idx].start){
@@ -32,8 +32,8 @@ for (int i = 0; i<= idx; i++){
 }
 int main()
 {
-    struct Interval intervals[] = {{2,3}, {1,4}};
-    int n = sizeof(intervals)/ sizeof(intervals[0]);
-    Merge(intervals, n);
+     Interval interval[] = {{2,3}, {1,4}};
+    int n = sizeof(interval)/ sizeof(interval[0]);
+    Merge(interval, n);
     return 0;
 }
